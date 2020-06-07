@@ -1,13 +1,8 @@
 package com.angioni.gianluca.testapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-
 import com.angioni.gianluca.testapp.data.BreweryRepository;
-import com.angioni.gianluca.testapp.model.Brewery;
-
-import java.util.ArrayList;
 import java.util.logging.Logger;
 
 public class MainActivity extends AppCompatActivity {
