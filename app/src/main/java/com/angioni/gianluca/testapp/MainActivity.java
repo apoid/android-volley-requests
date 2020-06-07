@@ -13,13 +13,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Simple data print from volley response
+        /**
+         * Simple data print from volley response
+         */
         //REPO.printBreweryData(this);
 
-        // Synchronous volley request
+        /**
+         * Synchronous volley request
+         */
         //ArrayList<Brewery> breweries = REPO.getBreweries(this);
         //Logger.getLogger(MainActivity.class.getSimpleName()).severe(breweries.toString());
 
+        /**
+         * Asynchronous volley request
+         */
         REPO.getBrewery(this, 2, brewery ->{
             Logger.getLogger(MainActivity.class.getSimpleName()).severe(brewery.toString());
         });

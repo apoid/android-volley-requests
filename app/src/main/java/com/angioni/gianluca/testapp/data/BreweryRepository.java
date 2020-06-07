@@ -23,6 +23,10 @@ import java.util.logging.Logger;
 public class BreweryRepository {
     private static final String URL = "https://api.openbrewerydb.org/breweries/";
 
+    /**
+     * Simple asynchronous print of data
+     * @param context
+     */
     public void printBreweryData(Context context){
         RequestQueue queue = Volley.newRequestQueue(context);
 
@@ -35,6 +39,12 @@ public class BreweryRepository {
         queue.add(request);
     }
 
+    /**
+     * Synchronous volley request
+     *
+     * @param context the context of our application
+     * @return {ArrayList<Brewery>} containing a list of all breweries from the database
+     */
     public ArrayList<Brewery> getBreweries(Context context){
         ArrayList<Brewery> breweries = new ArrayList<>();
         RequestQueue queue = Volley.newRequestQueue(context);
@@ -50,6 +60,13 @@ public class BreweryRepository {
         return breweries; //
     }
 
+    /**
+     * Asynchronous volley request
+     *
+     * @param context the context of our application
+     * @param id the id of the brewery
+     * @param listener the listener where we will pass our request response
+     */
     public void getBrewery(Context context, int id, Listener<Brewery> listener){
         RequestQueue queue = Volley.newRequestQueue(context);
         String urlWithId = URL + id;
@@ -64,6 +81,12 @@ public class BreweryRepository {
         queue.add(request);
     }
 
+    /**
+     * Method to extract a Brewery object from a volley response
+     *
+     * @param response the response we received from the volley request
+     * @return a {@link Brewery} object containing the data retrieve from response
+     */
     private Brewery extractResponse(JSONObject response) {
         Brewery result;
         try {
@@ -82,6 +105,12 @@ public class BreweryRepository {
         }
     }
 
+    /**
+     * Method to extract a {ArrayList<Brewery>} object from a volley response
+     *
+     * @param response the response we received from the volley request
+     * @return {ArrayList<Brewery>} containing a list of all breweries extracted from response
+     */
     private List<Brewery> extractBreweriesData(JSONArray response) {
         try{
             ArrayList<Brewery> data = new ArrayList<>();
